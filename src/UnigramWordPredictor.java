@@ -53,6 +53,15 @@ public class UnigramWordPredictor implements WordPredictor {
     
     // Methods within the same class as the private instance fields, can access them directly
     neighborMap = new HashMap<>();
+    // Loop through the list of training words and map each word to the list of words that proceeds it
+    for (int i = 0; i < trainingWords.size() -1; i++) {
+      String key = trainingWords.get(i);
+      String value = trainingWords.get(i + 1);
+      // This line checks if the key is present in the map, if not it adds the key with an empty list as the value
+      neighborMap.putIfAbsent(key, new ArrayList<>());
+
+      // Now we can add values to the list associated with a given key
+      neighborMap.get(key).add(value);
     }
   }
 
