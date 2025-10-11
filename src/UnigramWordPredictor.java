@@ -50,8 +50,10 @@ public class UnigramWordPredictor implements WordPredictor {
    */
   public void train(Scanner scanner) {
     List<String> trainingWords = tokenizer.tokenize(scanner);
-
-    // TODO: Convert the trainingWords into neighborMap here
+    
+    // Methods within the same class as the private instance fields, can access them directly
+    neighborMap = new HashMap<>();
+    }
   }
 
   /**
