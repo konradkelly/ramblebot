@@ -33,11 +33,16 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
     List<String> tokens = new ArrayList<>();
 
     while (scanner.hasNext()) {
-      tokens.add(scanner.next());   
+      String token = scanner.next().toLowerCase();
+// Check for period at the end of the token. Split token with substring and then add period as separate token.
+    if (token.endsWith(".")) {
+      tokens.add(token.substring(0, token.length() - 1));
+      tokens.add(".");
+    } else {
+      tokens.add(token);
     }
-    
-
-    return tokens;
   }
-}
+    return tokens;
+    }
+  }
 
