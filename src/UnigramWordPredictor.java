@@ -57,7 +57,9 @@ public class UnigramWordPredictor implements WordPredictor {
     for (int i = 0; i < trainingWords.size() -1; i++) {
       String key = trainingWords.get(i);
       String value = trainingWords.get(i + 1);
-      // This line checks if the key is present in the map, if not it adds the key with an empty list as the value
+      // This line checks if the key is present in the map, if not it adds the key with an empty list.
+      // Since the neighborMap is presently empty, each iteration of the for loop will trigger putIfAbsent
+      // To add the key with an empty list.
       neighborMap.putIfAbsent(key, new ArrayList<>());
 
       // Now we can add values to the list associated with a given key
