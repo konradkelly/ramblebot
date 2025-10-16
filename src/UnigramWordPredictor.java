@@ -118,6 +118,10 @@ public class UnigramWordPredictor implements WordPredictor {
     String lastWord = context.get(context.size() - 1);
     List<String> possibleNextWords = neighborMap.get(lastWord);
 
+    if (possibleNextWords == null || possibleNextWords.isEmpty()) {
+        return null;
+    }
+
     String nextWord = possibleNextWords.get((int)(Math.random() * possibleNextWords.size()));    
 
     return nextWord;
